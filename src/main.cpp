@@ -32,16 +32,15 @@ Each FOOD ITEM should have the following information.
 ============================================================================================
 */
 #include<iostream>
-#include "include/Billing.hpp"
-#include "include/Order.hpp"
-#include "include/Menu.hpp"
+// #include "include/Billing.hpp"
+// #include "include/Order.hpp"
+#include "MenuSystem.hpp"
 
-// ASCII Art Header Menu
-
-
+// ASCII Art Header
 int main(){
-    Order order;
-    Menu menu;
+    MenuSystem menu;
+
+    menu.showMainMenu();
     
     return 0;
 }

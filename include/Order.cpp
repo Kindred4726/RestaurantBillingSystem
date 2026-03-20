@@ -1,7 +1,8 @@
 #include "Order.hpp"
-#include "Menu.hpp"
+#include "MenuSystem.hpp"
 
-Order::Order()
+
+Order::Order() : _menu(nullptr)
 {
     orderID = rand() % 1000; // Generate a random order ID
 }
@@ -21,6 +22,11 @@ void Order::collectCustomerDetails()
     std::cin>>paymentMethod;
 }
 
+void Order::setMenu(MenuSystem &menu)
+{
+    _menu = &menu;
+}
+
 void Order::getOrderDetails()
 {
     std::string itemName;
@@ -32,10 +38,11 @@ void Order::getOrderDetails()
     {
         std::cout<<"Enter item name: ";
         std::cin>>itemName;
-        FoodItem item = Menu::getItemByName(itemName);
-        items.push(item);
+        FoodItem item = _menu->getItemByName(itemName);
+        int quantity;
         std::cout<<"Enter quantity: ";
         std::cin>>quantity;
+        items.push_back({item, quantity});
         i++;
     }
 }
